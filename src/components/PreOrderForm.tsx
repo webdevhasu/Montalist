@@ -63,7 +63,13 @@ export function PreOrderForm() {
         body: JSON.stringify(form),
       })
 
-      const data = await res.json()
+      let data: any = {}
+      const text = await res.text()
+      try {
+        data = JSON.parse(text)
+      } catch {
+        throw new Error('Server se response nahi mila. Dobara try karein.')
+      }
 
       if (!res.ok) {
         throw new Error(data.error || 'Something went wrong')

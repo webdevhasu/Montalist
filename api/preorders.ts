@@ -15,10 +15,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { name, phone, city, email, skinConcern, consent } = req.body
+    const { name, phone, city, email, skinConcern, consent } = req.body || {}
 
     if (!name || !phone || !city || !skinConcern || !consent) {
-      return res.status(400).json({ error: 'Missing required fields' })
+      return res.status(400).json({ error: 'Sab required fields fill karein.' })
     }
 
     const order = await savePreOrder({
@@ -37,8 +37,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       id: order.id,
       totalReservations: count,
     })
-  } catch (error) {
-    console.error('Pre-order error:', error)
-    return res.status(500).json({ error: 'Server error. Please try again.' })
+  } catch (error: any) {
+    console.error('Pre-order error:', error?.message || error)
+    return res.status(500).json({ error: 'Server error. Dobara try karein.' })
   }
 }
