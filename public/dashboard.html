@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>MONTALIST — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #F8F6F1;
+      color: #171717;
+      min-height: 100vh;
+    }
+    .login-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .login-box {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .login-box h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .login-box p { color: #8B8680; font-size: 13px; margin-bottom: 24px; }
+    .login-box input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      font-size: 14px;
+      background: #F8F6F1;
+      margin-bottom: 16px;
+      outline: none;
+    }
+    .login-box input:focus { border-color: #5B7B8A; }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: #171717;
+      color: #F8F6F1;
+      border: none;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .login-box button:hover { background: #2A2A2A; }
+    .login-error { color: #dc2626; font-size: 12px; margin-top: 8px; display: none; }
+
+    .dashboard { display: none; }
+    .dashboard.active { display: block; }
+    .dash-header {
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: white;
+    }
+    .dash-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+    }
+    .dash-header .stats {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .stat-box {
+      text-align: center;
+    }
+    .stat-box .num {
+      font-size: 28px;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+    }
+    .stat-box .label {
+      font-size: 11px;
+      color: #8B8680;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .dash-header button {
+      padding: 8px 20px;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      color: #171717;
+    }
+    .dash-content { padding: 32px; max-width: 1200px; margin: 0 auto; }
+    .filters {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .filters input, .filters select {
+      padding: 10px 14px;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      font-size: 13px;
+      background: white;
+      outline: none;
+    }
+    .filters input:focus, .filters select:focus { border-color: #5B7B8A; }
+    .table-wrap {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.04);
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      text-align: left;
+      padding: 14px 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8B8680;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    td {
+      padding: 14px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+      white-space: nowrap;
+    }
+    tr:hover td { background: #FAFAF7; }
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 500;
+      background: #C5D5DC;
+      color: #171717;
+    }
+    .empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: #8B8680;
+    }
+    .loading { text-align: center; padding: 60px; color: #8B8680; }
+    @media (max-width: 768px) {
+      .dash-header { padding: 16px; flex-wrap: wrap; gap: 12px; }
+      .dash-content { padding: 16px; }
+      th, td { padding: 10px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <div class="login-box">
+      <h1>MONTALIST</h1>
+      <p>Dashboard — Pre-Order Data</p>
+      <input type="password" id="passwordInput" placeholder="Password" />
+      <button onclick="handleLogin()">Login</button>
+      <p id="loginError" class="login-error">Wrong password</p>
+    </div>
+  </div>
+
+  <div id="dashboard" class="dashboard">
+    <div class="dash-header">
+      <h2>MONTALIST Dashboard</h2>
+      <div class="stats">
+        <div class="stat-box">
+          <div class="num" id="totalCount">0</div>
+          <div class="label">Reservations</div>
+        </div>
+        <div class="stat-box">
+          <div class="num" id="todayCount">0</div>
+          <div class="label">Today</div>
+        </div>
+      </div>
+      <button onclick="handleLogout()">Logout</button>
+    </div>
+    <div class="dash-content">
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Search name, phone, city..." oninput="renderTable()" />
+        <select id="concernFilter" onchange="renderTable()">
+          <option value="">All Concerns</option>
+          <option value="Dryness">Dryness</option>
+          <option value="Sun protection">Sun protection</option>
+          <option value="Sensitivity">Sensitivity</option>
+          <option value="Overall routine">Overall routine</option>
+          <option value="Mountain climate">Mountain climate</option>
+        </select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>City</th>
+              <th>Email</th>
+              <th>Concern</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr><td colspan="7" class="loading">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let orders = [];
+    let token = '';
+
+    async function handleLogin() {
+      const pw = document.getElementById('passwordInput').value;
+      try {
+        const res = await fetch('/api/dashboard', {
+          headers: { 'Authorization': 'Bearer ' + pw }
+        });
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        token = pw;
+        orders = data.orders || [];
+        document.getElementById('totalCount').textContent = data.total || 0;
+        const today = new Date().toDateString();
+        document.getElementById('todayCount').textContent =
+          orders.filter(o => new Date(o.createdAt).toDateString() === today).length;
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('dashboard').classList.add('active');
+        renderTable();
+      } catch {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    }
+
+    function handleLogout() {
+      token = '';
+      orders = [];
+      document.getElementById('dashboard').classList.remove('active');
+      document.getElementById('loginScreen').style.display = 'flex';
+      document.getElementById('passwordInput').value = '';
+    }
+
+    function renderTable() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const concern = document.getElementById('concernFilter').value;
+      const filtered = orders.filter(o => {
+        const matchSearch = !search ||
+          o.name.toLowerCase().includes(search) ||
+          o.phone.includes(search) ||
+          o.city.toLowerCase().includes(search) ||
+          (o.email && o.email.toLowerCase().includes(search));
+        const matchConcern = !concern || o.skinConcern === concern;
+        return matchSearch && matchConcern;
+      });
+      const tbody = document.getElementById('tableBody');
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty">No reservations found</td></tr>';
+        return;
+      }
+      tbody.innerHTML = filtered.map((o, i) => `
+        <tr>
+          <td>${i + 1}</td>
+          <td><strong>${esc(o.name)}</strong></td>
+          <td>${esc(o.phone)}</td>
+          <td>${esc(o.city)}</td>
+          <td>${esc(o.email || '—')}</td>
+          <td><span class="tag">${esc(o.skinConcern)}</span></td>
+          <td>${new Date(o.createdAt).toLocaleDateString('en-PK', { day: 'numeric', month: 'short', year: 'numeric' })}</td>
+        </tr>
+      `).join('');
+    }
+
+    function esc(s) {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    document.getElementById('passwordInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleLogin();
+    });
+  </script>
+</body>
+</html>
