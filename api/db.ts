@@ -1,13 +1,17 @@
-import { Redis } from '@upstash/redis'
-
 const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL || ''
 const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || ''
 
-const useUpstash = !!(UPSTASH_URL && UPSTASH_TOKEN)
-
-let redis: Redis | null = null
-if (useUpstash) {
-  redis = new Redis({ url: UPSTASH_URL, token: UPSTASH_TOKEN })
+async function redisCommand(command: string[]): Promise<any> {
+  const res = await fetch(UPSTASH_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${UPSTASH_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(command),
+  })
+  if (!res.ok) throw new Error(`Redis error: ${res.status}`)
+  return res.json()
 }
 
 export interface PreOrder {
@@ -29,29 +33,27 @@ export async function savePreOrder(order: Omit<PreOrder, 'id' | 'createdAt'>): P
     createdAt: new Date().toISOString(),
   }
 
-  if (useUpstash && redis) {
-    await redis.hset('preorders', { [id]: JSON.stringify(fullOrder) })
-    await redis.incr('preorder_count')
-  }
+  await redisCommand(['HSET', 'preorders', id, JSON.stringify(fullOrder)])
+  await redisCommand(['INCR', 'preorder_count'])
 
   return fullOrder
 }
 
 export async function getPreOrders(): Promise<PreOrder[]> {
-  if (useUpstash && redis) {
-    const data = await redis.hgetall('preorders')
-    if (!data) return []
-    return Object.values(data)
-      .map((v) => JSON.parse(v as string) as PreOrder)
-      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  const data = await redisCommand(['HGETALL', 'preorders'])
+  if (!data?.result) return []
+
+  const result: PreOrder[] = []
+  const entries = data.result
+  for (let i = 0; i < entries.length; i += 2) {
+    try {
+      result.push(JSON.parse(entries[i + 1]))
+    } catch {}
   }
-  return []
+  return result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
 }
 
 export async function getPreOrderCount(): Promise<number> {
-  if (useUpstash && redis) {
-    const count = await redis.get<number>('preorder_count')
-    return count || 0
-  }
-  return 0
+  const data = await redisCommand(['GET', 'preorder_count'])
+  return data?.result ? parseInt(data.result) || 0 : 0
 }

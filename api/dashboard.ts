@@ -1,33 +1,19 @@
-import type { IncomingMessage, ServerResponse } from 'http'
 import { getPreOrders, getPreOrderCount } from './db'
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'montalist2026'
 
-export default async function handler(req: IncomingMessage, res: ServerResponse) {
-  res.setHeader('Content-Type', 'application/json')
+export default async function handler(req: any, res: any) {
+  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' })
 
-  if (req.method !== 'GET') {
-    res.writeHead(405)
-    res.end(JSON.stringify({ error: 'Method not allowed' }))
-    return
-  }
-
-  const authHeader = req.headers.authorization
-  if (!authHeader || authHeader !== `Bearer ${ADMIN_PASSWORD}`) {
-    res.writeHead(401)
-    res.end(JSON.stringify({ error: 'Unauthorized' }))
-    return
-  }
+  const auth = req.headers.authorization
+  if (!auth || auth !== `Bearer ${ADMIN_PASSWORD}`) return res.status(401).json({ error: 'Unauthorized' })
 
   try {
     const orders = await getPreOrders()
     const count = await getPreOrderCount()
-
-    res.writeHead(200)
-    res.end(JSON.stringify({ total: count, orders }))
+    return res.status(200).json({ total: count, orders })
   } catch (error: any) {
     console.error('Dashboard error:', error?.message || error)
-    res.writeHead(500)
-    res.end(JSON.stringify({ error: 'Server error' }))
+    return res.status(500).json({ error: 'Server error' })
   }
 }
