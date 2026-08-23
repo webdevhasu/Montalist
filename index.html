@@ -65,6 +65,17 @@
             "description": "A gentle face wash that cleans without stripping the skin. Contains Glycerin, Panthenol, Niacinamide, Betaine, and Allantoin. Target pH 5.0–5.5. Suitable for dry, cold mountain environments.",
             "brand": { "@type": "Brand", "name": "MONTALIST" },
             "category": "Face Wash",
+            "sku": "MT-FW-001",
+            "image": "https://montalist.vercel.app/images/products/face-wash.png",
+            "offers": {
+              "@type": "Offer",
+              "price": "2999",
+              "priceCurrency": "PKR",
+              "availability": "https://schema.org/PreOrder",
+              "url": "https://montalist.vercel.app/#preorder",
+              "priceValidUntil": "2026-12-31",
+              "seller": { "@type": "Brand", "name": "MONTALIST" }
+            },
             "additionalProperty": [
               { "@type": "PropertyValue", "name": "pH Level", "value": "5.0-5.5" },
               { "@type": "PropertyValue", "name": "Key Ingredients", "value": "Glycerin, Panthenol, Niacinamide, Betaine, Allantoin" },
@@ -81,6 +92,17 @@
             "description": "Daily UV protection sunscreen with SPF 50+, PA++++, Broad Spectrum UVA + UVB protection. Lightweight, fragrance-free, no visible white cast. Contains Niacinamide, Panthenol, and Hyaluronic Acid. Designed for high-altitude mountain environments with intense UV exposure.",
             "brand": { "@type": "Brand", "name": "MONTALIST" },
             "category": "Sunscreen",
+            "sku": "MT-SP-001",
+            "image": "https://montalist.vercel.app/images/products/spf50.png",
+            "offers": {
+              "@type": "Offer",
+              "price": "2999",
+              "priceCurrency": "PKR",
+              "availability": "https://schema.org/PreOrder",
+              "url": "https://montalist.vercel.app/#preorder",
+              "priceValidUntil": "2026-12-31",
+              "seller": { "@type": "Brand", "name": "MONTALIST" }
+            },
             "additionalProperty": [
               { "@type": "PropertyValue", "name": "SPF", "value": "50+" },
               { "@type": "PropertyValue", "name": "PA Rating", "value": "++++" },
@@ -99,6 +121,17 @@
             "description": "Night-time hydration and skin-barrier support cream. Contains Glycerin, Niacinamide, Squalane, Panthenol, Ceramide + Cholesterol + Fatty Acid lipid system, Beta-Glucan, Hyaluronic Acid, and Allantoin. Designed for dry, cold, windy mountain environments.",
             "brand": { "@type": "Brand", "name": "MONTALIST" },
             "category": "Night Cream",
+            "sku": "MT-NC-001",
+            "image": "https://montalist.vercel.app/images/products/night-cream.png",
+            "offers": {
+              "@type": "Offer",
+              "price": "2999",
+              "priceCurrency": "PKR",
+              "availability": "https://schema.org/PreOrder",
+              "url": "https://montalist.vercel.app/#preorder",
+              "priceValidUntil": "2026-12-31",
+              "seller": { "@type": "Brand", "name": "MONTALIST" }
+            },
             "additionalProperty": [
               { "@type": "PropertyValue", "name": "Key Ingredients", "value": "Glycerin, Niacinamide 4%, Squalane, Panthenol, Ceramides, Beta-Glucan, Hyaluronic Acid" },
               { "@type": "PropertyValue", "name": "Use", "value": "Night-time barrier support and hydration" }
@@ -106,6 +139,50 @@
           }
         }
       ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "MONTALIST Launch Kit",
+      "description": "Complete 3-product mountain skincare system: Gentle Barrier Face Wash + High-Altitude SPF 50+ + Barrier Night Cream. Born in Chitral, designed for dry cold windy mountain environments. Free delivery across Pakistan.",
+      "brand": { "@type": "Brand", "name": "MONTALIST" },
+      "category": "Skincare Bundle",
+      "sku": "MT-LK-001",
+      "image": "https://montalist.vercel.app/images/products/spf50.png",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "2999",
+        "highPrice": "2999",
+        "priceCurrency": "PKR",
+        "availability": "https://schema.org/PreOrder",
+        "url": "https://montalist.vercel.app/#preorder",
+        "priceValidUntil": "2026-12-31",
+        "seller": { "@type": "Brand", "name": "MONTALIST" },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "PKR"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "PK"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 2,
+              "maxValue": 5,
+              "unitCode": "DAY"
+            }
+          }
+        }
+      }
     }
     </script>
 
