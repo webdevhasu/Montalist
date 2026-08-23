@@ -1,28 +1,33 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getPreOrders, getPreOrderCount } from './db.js'
+import type { IncomingMessage, ServerResponse } from 'http'
+import { getPreOrders, getPreOrderCount } from './db'
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'montalist2026'
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: IncomingMessage, res: ServerResponse) {
+  res.setHeader('Content-Type', 'application/json')
+
   if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' })
+    res.writeHead(405)
+    res.end(JSON.stringify({ error: 'Method not allowed' }))
+    return
   }
 
   const authHeader = req.headers.authorization
   if (!authHeader || authHeader !== `Bearer ${ADMIN_PASSWORD}`) {
-    return res.status(401).json({ error: 'Unauthorized' })
+    res.writeHead(401)
+    res.end(JSON.stringify({ error: 'Unauthorized' }))
+    return
   }
 
   try {
     const orders = await getPreOrders()
     const count = await getPreOrderCount()
 
-    return res.status(200).json({
-      total: count,
-      orders,
-    })
-  } catch (error) {
-    console.error('Dashboard error:', error)
-    return res.status(500).json({ error: 'Server error' })
+    res.writeHead(200)
+    res.end(JSON.stringify({ total: count, orders }))
+  } catch (error: any) {
+    console.error('Dashboard error:', error?.message || error)
+    res.writeHead(500)
+    res.end(JSON.stringify({ error: 'Server error' }))
   }
 }

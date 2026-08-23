@@ -1,24 +1,52 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { savePreOrder, getPreOrderCount } from './db.js'
+import type { IncomingMessage, ServerResponse } from 'http'
+import { savePreOrder, getPreOrderCount } from './db'
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+interface PreOrderBody {
+  name?: string
+  phone?: string
+  city?: string
+  email?: string
+  skinConcern?: string
+  consent?: boolean
+}
+
+function parseBody(req: IncomingMessage): Promise<PreOrderBody> {
+  return new Promise((resolve) => {
+    let body = ''
+    req.on('data', (chunk) => { body += chunk })
+    req.on('end', () => {
+      try { resolve(JSON.parse(body)) }
+      catch { resolve({}) }
+    })
+  })
+}
+
+export default async function handler(req: IncomingMessage, res: ServerResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Content-Type', 'application/json')
 
   if (req.method === 'OPTIONS') {
-    return res.status(200).end()
+    res.writeHead(200)
+    res.end()
+    return
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
+    res.writeHead(405)
+    res.end(JSON.stringify({ error: 'Method not allowed' }))
+    return
   }
 
   try {
-    const { name, phone, city, email, skinConcern, consent } = req.body || {}
+    const body = await parseBody(req)
+    const { name, phone, city, email, skinConcern, consent } = body
 
     if (!name || !phone || !city || !skinConcern || !consent) {
-      return res.status(400).json({ error: 'Sab required fields fill karein.' })
+      res.writeHead(400)
+      res.end(JSON.stringify({ error: 'Sab required fields fill karein.' }))
+      return
     }
 
     const order = await savePreOrder({
@@ -32,13 +60,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const count = await getPreOrderCount()
 
-    return res.status(200).json({
+    res.writeHead(200)
+    res.end(JSON.stringify({
       success: true,
       id: order.id,
       totalReservations: count,
-    })
+    }))
   } catch (error: any) {
     console.error('Pre-order error:', error?.message || error)
-    return res.status(500).json({ error: 'Server error. Dobara try karein.' })
+    res.writeHead(500)
+    res.end(JSON.stringify({ error: 'Server error. Dobara try karein.' }))
   }
 }
