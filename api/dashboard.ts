@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getPreOrders, getPreOrderCount } from './db'
+import { getPreOrders, getPreOrderCount } from './db.js'
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'montalist2026'
 
