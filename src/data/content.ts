@@ -1,33 +1,63 @@
 export const faqData = [
   {
-    question: 'MONTALIST kis ke liye hai?',
+    question: 'Chitral mein best skin care brand kaun sa hai?',
     answer:
-      'MONTALIST un logon ke liye hai jo dry, cold, windy aur high-UV environment mein rehte hain — khaas taur par pahari aur mountain regions mein. Yeh un logon ke liye bhi suitable hai jo aise harsh environmental conditions ka rozana saamna karte hain.',
+      'MONTALIST Chitral ka apna skin care brand hai. Yeh Chitral Valley mein born hua hai aur mountain environments ke liye design kiya gaya hai — dry air, cold weather, wind aur high UV exposure ke liye. Yeh Chitral ki pehli apni skin care brand hai.',
   },
   {
-    question: 'Kya yeh sirf Chitral ke logon ke liye hai?',
+    question: 'Chitral mein skincare products kahan se khareedein?',
     answer:
-      'Nahi. MONTALIST Chitral se inspired hai lekin yeh har us insaan ke liye hai jo dry hawa, thand, wind aur strong UV exposure ke environmental conditions mein rehta hai — Pakistan mein ya duniya mein kahin bhi.',
+      'Aap montalist.vercel.app par ja kar pre-order kar sakte hain. Face wash, SPF 50+ sunscreen, aur night cream — teeno products Chitral ke environment ke liye design kiye gaye hain. Free delivery hai pooray Pakistan mein.',
   },
   {
-    question: 'Mountain environment ke liye kyun?',
+    question: 'Chitral ke liye best sunscreen kaun sa hai?',
     answer:
-      'Pahari ilaqon mein dry hawa, thand, hawa aur zyada UV exposure skin ko zyada dry aur stressed feel kara sakta hai. MONTALIST isi environment ko samajh kar design kiya gaya hai — generic skincare nahi, environmental exposure ke around skincare.',
+      'MONTALIST High-Altitude SPF 50+ Chitral ke liye best hai. Chitral mein high altitude ki wajah se UV exposure zyada hota hai. SPF 50+, PA++++, Broad Spectrum UVA + UVB protection deta hai. Fragrance-free hai aur white cast nahi chhodta.',
   },
   {
-    question: 'SPF 50+ kyun?',
+    question: 'Chitral mein dry skin ke liye best face wash kaun sa hai?',
     answer:
-      'Higher altitude mein UV exposure zyada hota hai. SPF 50+ daily UVA aur UVB protection deta hai jo mountain environment mein essential hai. PA++++ rating UVA protection ko indicate karti hai.',
+      'MONTALIST Gentle Barrier Face Wash Chitral ke dry skin ke liye best hai. Glycerin, Panthenol, Niacinamide, Betaine aur Allantoin ke saath bana hai. pH 5.0-5.5 hai jo skin ke natural balance ko maintain karta hai. Chitral ki dry hawa mein skin ko strip nahi karta.',
   },
   {
-    question: 'Kya yeh sensitive skin ke liye suitable hai?',
+    question: 'Chitral mein night cream kyun zaroori hai?',
+    answer:
+      'Chitral mein cold aur dry environment ki wajah se skin ka barrier weak hota hai. MONTALIST Barrier Night Cream Ceramides, Squalane, Niacinamide aur Hyaluronic Acid ke saath skin ko overnight repair aur hydrate karti hai.',
+  },
+  {
+    question: 'Chitral ke mountains mein skincare kyun different hai?',
+    answer:
+      'Chitral mein high altitude ki wajah se UV exposure zyada hota hai, dry hawa skin se moisture churaati hai, tez hawa environmental stress barhati hai, aur thand ke mausam mein skin dry aur tight feel hoti hai. MONTALIST isi environment ke liye design kiya gaya hai.',
+  },
+  {
+    question: 'Kya MONTALIST organic skin care products hai?',
+    answer:
+      'MONTALIST scientifically validated ingredients use karta hai — Niacinamide, Panthenol, Ceramides, Hyaluronic Acid, Squalane. Har ingredient ka clear purpose hai. Chitral mein traditional herbal remedies bhi hain lekin MONTALIST modern dermatological science ke saath aata hai.',
+  },
+  {
+    question: 'Chitral ke alawa Pakistan mein available hai?',
+    answer:
+      'Haan. MONTALIST Chitral se inspired hai lekin pooray Pakistan mein deliver hota hai. Free delivery hai. Pre-order abhi open hai.',
+  },
+  {
+    question: 'Mountain environment ke liye skincare kyun?',
+    answer:
+      'Pahari ilaqon mein dry hawa, thand, hawa aur zyada UV exposure skin ko zyada dry aur stressed feel kara sakta hai. MONTALIST isi environment ko samajh kar design kiya gaya hai — generic skincare nahi.',
+  },
+  {
+    question: 'SPF 50+ kyun zaroori hai Chitral mein?',
+    answer:
+      'Higher altitude mein UV exposure zyada hota hai. Chitral mein yeh aur bhi zyada hai. SPF 50+ daily UVA aur UVB protection deta hai jo mountain environment mein essential hai. PA++++ rating UVA protection ko indicate karti hai.',
+  },
+  {
+    question: 'Kya MONTALIST sensitive skin ke liye suitable hai?',
     answer:
       'MONTALIST fragrance-free formulas ke saath design kiya gaya hai aur ingredients carefully choose kiye gaye hain skin comfort ke liye. Lekin har skin alag hoti hai — patch test karna hamesha recommend kiya jata hai.',
   },
   {
     question: 'Teen products ko kis order mein use karna hai?',
     answer:
-      'Morning (AM): Face Wash → SPF 50+\nNight (PM): Face Wash → Night Cream\nSirf teen steps — simple aur effective.',
+      'Morning (AM): Face Wash → SPF 50+\nNight (PM): Face Wash → Night Cream\nSirf teen steps — Chitral ke mountains ke liye perfect routine.',
   },
   {
     question: 'Pre-order ka matlab kya hai?',
@@ -35,24 +65,9 @@ export const faqData = [
       'MONTALIST abhi launch se pehle early reservations collect kar raha hai. Iska matlab hai ke aap apni interest show kar rahe hain taake hum demand validate kar sakein aur phir production scale kar sakein. Abhi koi payment nahi ho rahi.',
   },
   {
-    question: 'Product kab ship hoga?',
-    answer:
-      'Final shipping date testing aur production confirmation ke baad communicate ki jayegi. Hum aapko launch updates share kareinge.',
-  },
-  {
-    question: 'Final formulation kab confirm hogi?',
-    answer:
-      'Final formula, testing aur product claims launch se pehle validate kiye jayenge. Listed percentages aur formulation details abhi development targets hain.',
-  },
-  {
     question: 'Ingredients transparent kyun rakhe hain?',
     answer:
       'MONTALIST ka goal zyada ingredients dikhana nahi, balke har ingredient ka clear purpose rakhna hai. Hum chahte hain ke aap samjhein ke aapke products mein kya hai aur kyun hai.',
-  },
-  {
-    question: 'Kya MONTALIST acne treat karta hai?',
-    answer:
-      'MONTALIST acne treatment product ke taur par position nahi kiya ja raha. Agar acne clinically significant ho to dermatologist se consult karna better hai.',
   },
 ]
 
@@ -69,13 +84,13 @@ export const ingredients = [
 ]
 
 export const trustItems = [
-  { title: 'SPF Testing', description: 'Sun Protection Factor validation' },
-  { title: 'UVA Protection Testing', description: 'UVA defense verification' },
-  { title: 'Stability Testing', description: 'Formula shelf-life aur condition testing' },
+  { title: 'SPF Testing', description: 'Sun Protection Factor validation — Chitral ke high altitude UV ke liye tested' },
+  { title: 'UVA Protection Testing', description: 'UVA defense verification — pahari UV exposure ke liye essential' },
+  { title: 'Stability Testing', description: 'Formula shelf-life aur cold/dry condition testing — Chitral ke mausam ke liye' },
   { title: 'Microbiological Safety', description: 'Contamination aur safety testing' },
   { title: 'Packaging Compatibility', description: 'Packaging aur formula compatibility' },
   { title: 'Product Safety', description: 'Overall product safety assessment' },
-  { title: 'Formulation Validation', description: 'Final formula ke claims ki verification' },
+  { title: 'Formulation Validation', description: 'Final formula ke claims ki verification — transparent ingredients' },
 ]
 
 export const navLinks = [

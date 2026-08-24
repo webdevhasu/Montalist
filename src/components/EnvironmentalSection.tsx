@@ -10,7 +10,7 @@ const envFactors = [
     ),
     title: 'Strong UV Exposure',
     description:
-      'Higher altitude mein UV radiation zyada hota hai. Daily protection essential hai.',
+      'Chitral mein higher altitude ki wajah se UV radiation zyada hota hai. Daily protection essential hai.',
   },
   {
     icon: (
@@ -61,12 +61,12 @@ export function EnvironmentalSection() {
             The Environment
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal leading-[1.15] mb-5 max-w-3xl mx-auto">
-            Paharon mein skincare kyun different feel ho sakti hai?
+            Chitral mein skincare kyun different feel ho sakti hai?
           </h2>
           <p className="text-stone max-w-2xl mx-auto leading-relaxed">
-            Mountain environment mein rehne wale log daily in environmental
+            Chitral Valley mein rehne wale log daily in environmental
             conditions ka saamna karte hain jo skin ko zyada stress dein sakti
-            hain.
+            hain — high altitude, dry air, cold weather, aur intense UV exposure.
           </p>
         </div>
 

@@ -24,9 +24,9 @@ export function Footer() {
             <p className="font-sans text-lg tracking-[0.25em] font-medium uppercase text-ivory mb-3">
               MONTALIST
             </p>
-            <p className="text-ivory/40 text-sm mb-1">Mountain Skin System</p>
+            <p className="text-ivory/40 text-sm mb-1">Chitral's Own Skin Care Brand</p>
             <p className="text-ivory/30 text-xs italic">
-              Born in Chitral. Built for the mountains.
+              Born in Chitral Valley. Built for the mountains.
             </p>
           </div>
 
@@ -70,7 +70,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} MONTALIST. All rights reserved.
           </p>
           <p className="text-ivory/20 text-[10px] tracking-wider">
-            Mountain Skin System — Born in Chitral
+            Chitral Skin Care Brand — Born in Chitral Valley, Pakistan
           </p>
         </div>
       </div>

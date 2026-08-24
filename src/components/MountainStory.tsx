@@ -16,24 +16,27 @@ export function MountainStory() {
               Our Story
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal leading-[1.15] mb-6">
-              Born in Chitral.
+              Born in Chitral Valley.
               <br />
               Built for the mountains.
             </h2>
             <div className="space-y-4 text-stone leading-relaxed">
               <p>
-                MONTALIST ka idea Chitral se nikla — ek aise environment se jahan
+                MONTALIST ka idea Chitral Valley se nikla — ek aise environment se jahan
                 cold, dry air, wind aur strong sunlight everyday life ka hissa
-                hain.
+                hain. Chitral ke high-altitude mountains mein UV exposure
+                zyada hota hai, dry hawa skin se moisture churaati hai.
               </p>
               <p>
-                Humne socha ke skincare ko sirf generic skin concerns ke around
-                nahi, balke environment ke around bhi design kiya ja sakta hai.
+                Humne socha ke Chitral ki skin care needs ko sirf generic skin concerns ke around
+                nahi, balke Chitral ke mountain environment ke around design kiya ja sakta hai.
+                Yeh Chitral ki apni organic skin care brand hai.
               </p>
               <p>
                 Yeh Pakistan mein bana hai, lekin internationally credible
                 standards ke saath. Chitral ke mountains se inspire hua hai,
-                aur unhi environmental conditions ke liye design kiya gaya hai.
+                aur Chitral ke environmental conditions ke liye design kiya gaya hai.
+                Best skincare products in Chitral — yeh hamara mission hai.
               </p>
             </div>
           </div>
@@ -46,7 +49,7 @@ export function MountainStory() {
             <div className="relative bg-[#f0ede8] rounded-2xl overflow-hidden">
               <img
                 src="/images/products/heroproducts.png"
-                alt="MONTALIST Mountain Skin System — three products designed for mountain environments"
+                alt="MONTALIST — Chitral skin care brand products. Mountain skincare system for Chitral Valley dry climate and UV exposure."
                 className="w-full h-auto object-contain p-6 sm:p-10"
                 style={{ aspectRatio: '4/5' }}
                 loading="lazy"

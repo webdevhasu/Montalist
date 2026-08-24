@@ -23,7 +23,7 @@ export function Hero() {
           }`}
         >
           <p className="text-stone text-xs sm:text-sm tracking-[0.3em] uppercase mb-6 sm:mb-8">
-            Mountain Skin System
+            Chitral's Own Skin Care Brand
           </p>
         </div>
 
@@ -47,8 +47,9 @@ export function Hero() {
           }`}
         >
           <p className="text-stone text-base sm:text-lg max-w-xl mx-auto mb-10 sm:mb-12 leading-relaxed">
-            High-altitude skincare, designed for dry climates and intense UV
-            exposure. Chitral se nikla, mountains ke liye banaya gaya.
+            Chitral Valley se nikla — mountain skin care system jo dry climate
+            aur intense UV exposure ke liye design kiya gaya hai.
+            Best skincare products in Chitral, Pakistan.
           </p>
         </div>
 

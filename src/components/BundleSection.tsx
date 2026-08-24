@@ -15,14 +15,14 @@ export function BundleSection() {
         >
           <div className="text-center mb-14 sm:mb-20">
             <p className="text-ivory/50 text-xs tracking-[0.3em] uppercase mb-4">
-              The Mountain Skin System
+              Chitral's Mountain Skin System
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-ivory leading-[1.15] mb-5">
               3 Products. Ek Simple System.
             </h2>
             <p className="text-ivory/60 max-w-xl mx-auto leading-relaxed">
-              Teen alag random products ke bajaye ek simple AM/PM system jo
-              mountain environment ke around design kiya gaya hai.
+              Chitral Valley ke liye teen alag random products ke bajaye ek simple AM/PM system jo
+              mountain environment ke around design kiya gaya hai. Best skincare products in Chitral.
             </p>
           </div>
 

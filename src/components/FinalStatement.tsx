@@ -17,9 +17,9 @@ export function FinalStatement() {
             Serious environment.
           </h2>
           <p className="text-stone max-w-lg mx-auto leading-relaxed mb-10">
-            MONTALIST ek premium Pakistani skincare brand hai jo mountain
-            environment ke liye design kiya gaya hai. Transparent ingredients,
-            tested formulations, aur a clear system.
+            MONTALIST ek Chitral-based premium Pakistani skincare brand hai jo mountain
+            environment ke liye design kiya gaya hai. Chitral Valley ki apni organic skin care brand.
+            Transparent ingredients, tested formulations, aur a clear system.
           </p>
           <a
             href="#preorder"
